@@ -1,5 +1,6 @@
 package simpledb.metadata;
 
+import simpledb.index.IndexType;
 import simpledb.tx.Transaction;
 import simpledb.record.*;
 import java.util.Map;
@@ -36,6 +37,10 @@ public class MetadataMgr {
    public void createIndex(String idxname, String tblname, String fldname, Transaction tx) {
       idxmgr.createIndex(idxname, tblname, fldname, tx);
    }
+   // Overloaded method to allow specification of index type
+   public void createIndex(String idxname, String tblname, String fldname, Transaction tx, IndexType idxtype) {
+        idxmgr.createIndex(idxname, tblname, fldname, tx, idxtype);
+    }
    
    public Map<String,IndexInfo> getIndexInfo(String tblname, Transaction tx) {
       return idxmgr.getIndexInfo(tblname, tx);
@@ -44,4 +49,5 @@ public class MetadataMgr {
    public StatInfo getStatInfo(String tblname, TableInfo ti, Transaction tx) {
       return statmgr.getStatInfo(tblname, ti, tx);
    }
+
 }

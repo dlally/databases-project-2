@@ -1,6 +1,8 @@
 package simpledb.metadata;
 
 import static simpledb.metadata.TableMgr.MAX_NAME;
+
+import simpledb.index.IndexType;
 import simpledb.tx.Transaction;
 import simpledb.record.*;
 import java.util.*;
@@ -46,8 +48,20 @@ public class IndexMgr {
       rf.setString("indexname", idxname);
       rf.setString("tablename", tblname);
       rf.setString("fieldname", fldname);
+       //Set a default index type
+      rf.setString("indextype", IndexType.sh.name());
       rf.close();
    }
+    //Overloaded method to allow specifying type of index to create
+    public void createIndex(String idxname, String tblname, String fldname, Transaction tx, IndexType idxtype) {
+        RecordFile rf = new RecordFile(ti, tx);
+        rf.insert();
+        rf.setString("indexname", idxname);
+        rf.setString("tablename", tblname);
+        rf.setString("fieldname", fldname);
+        rf.setString("indextype", idxtype.name());
+        rf.close();
+    }
    
    /**
     * Returns a map containing the index info for all indexes
@@ -63,7 +77,8 @@ public class IndexMgr {
          if (rf.getString("tablename").equals(tblname)) {
          String idxname = rf.getString("indexname");
          String fldname = rf.getString("fieldname");
-         IndexInfo ii = new IndexInfo(idxname, tblname, fldname, tx);
+         String idxtype = rf.getString("indextype");
+         IndexInfo ii = new IndexInfo(idxname, IndexType.valueOf(idxtype), tblname, fldname, tx);
          result.put(fldname, ii);
       }
       rf.close();

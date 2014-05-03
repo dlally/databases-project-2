@@ -98,10 +98,11 @@ public class SimpleDB {
    /**
     * Creates a planner for SQL commands.
     * To change how the planner works, modify this method.
+    * Modified to use the IndexUpdatePlanner instead of the basic planner
     * @return the system's planner for SQL commands
     */public static Planner planner() {
       QueryPlanner  qplanner = new BasicQueryPlanner();
-      UpdatePlanner uplanner = new BasicUpdatePlanner();
+      UpdatePlanner uplanner = new IndexUpdatePlanner();
       return new Planner(qplanner, uplanner);
    }
 }
