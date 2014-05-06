@@ -115,7 +115,13 @@ public class IndexUpdatePlanner implements UpdatePlanner {
     }
 
     public int executeCreateIndex(CreateIndexData data, Transaction tx) {
-        SimpleDB.mdMgr().createIndex(data.indexName(), data.tableName(), data.fieldName(), tx);
+        System.err.println("fldname: " + data.fieldName());
+        if(data.getIdxtype() != null){
+            executeCreateIndex(data, tx, data.getIdxtype());
+        }
+        else {
+            SimpleDB.mdMgr().createIndex(data.indexName(), data.tableName(), data.fieldName(), tx);
+        }
         return 0;
     }
     //Overloaded method to allow specifying index type

@@ -5,6 +5,7 @@ import simpledb.index.ehash.Trie.TrieNode;
 import simpledb.query.Constant;
 import simpledb.record.RID;
 import simpledb.record.Schema;
+import simpledb.record.TableInfo;
 import simpledb.tx.Transaction;
 
 import java.util.ArrayList;
@@ -20,13 +21,17 @@ public class ExtensibleHashIndex implements Index {
 
 
     private final int BUCKET_SIZE = 3; // Arbitrary limit on bucket size
-    private String  binaryString;
+    private String  idxname, binaryString;
     private Constant searchkey;
     private TrieNode root, currNode;
     private int index;
+    private Schema sch;
+    private Transaction tx;
 
     public ExtensibleHashIndex(String idxname, Schema sch, Transaction tx){
-        // I dont see a use for the vars passed in, so i'll just ignore them
+        this.idxname = idxname;
+        this.sch = sch;
+        this.tx = tx;
         this.searchkey = null;
         root = new TrieNode();
         currNode = root;
@@ -47,6 +52,7 @@ public class ExtensibleHashIndex implements Index {
         close();
         this.searchkey = searchkey;
         binaryString = Integer.toBinaryString(searchkey.hashCode());
+        TableInfo ti = new TableInfo(idxname, sch);
         // Walk the trie
         currNode = walk(binaryString);
     }
@@ -138,6 +144,12 @@ public class ExtensibleHashIndex implements Index {
 
     }
 
+    /**
+     * Search the Trie data structure for the node
+     * which would contain the given binary string.
+     * @param binaryString the string to search for.
+     * @return the trie node found.
+     */
     public TrieNode walk(String binaryString){
         TrieNode foundNode = root;
         for(int i = 0; i < binaryString.length(); i++){

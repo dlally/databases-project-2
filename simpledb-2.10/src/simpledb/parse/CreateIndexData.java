@@ -9,8 +9,27 @@ import simpledb.index.IndexType;
 public class CreateIndexData {
    private String idxname, tblname, fldname;
    private IndexType idxtype;
-   
-   /**
+
+    public IndexType getIdxtype() {
+        return idxtype;
+    }
+
+
+    public String getIdxname() {
+        return idxname;
+    }
+
+
+    public String getTblname() {
+        return tblname;
+    }
+
+
+    public String getFldname() {
+        return fldname;
+    }
+
+    /**
     * Saves the table and field names of the specified index.
     */
    public CreateIndexData(IndexType idxtype, String idxname, String tblname, String fldname) {

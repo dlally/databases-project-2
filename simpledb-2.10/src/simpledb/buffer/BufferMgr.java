@@ -56,8 +56,8 @@ public class BufferMgr {
             buff = bufferMgr.pin(blk);
          }
          if (buff == null)
-            throw new BufferAbortException();
-         return buff;
+             throw new BufferAbortException();
+          return buff;
       }
       catch(InterruptedException e) {
          throw new BufferAbortException();
@@ -81,8 +81,9 @@ public class BufferMgr {
             wait(MAX_TIME);
             buff = bufferMgr.pinNew(filename, fmtr);
          }
-         if (buff == null)
-            throw new BufferAbortException();
+         if (buff == null) {
+             throw new BufferAbortException();
+         }
          return buff;
       }
       catch(InterruptedException e) {

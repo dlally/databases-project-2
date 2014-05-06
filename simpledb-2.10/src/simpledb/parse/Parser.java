@@ -248,8 +248,10 @@ public class Parser {
         lex.eatKeyword("on");
         String tblname = lex.eatId();
         lex.eatDelim('(');
-        String fldname = field();
+        String fldname = lex.eatId();
         lex.eatDelim(')');
+
+        System.out.println("Index about to be created!");
         return new CreateIndexData(idxType, idxname, tblname, fldname);
     }
 }

@@ -23,7 +23,7 @@ import simpledb.index.planner.IndexUpdatePlanner;
  * @author Edward Sciore
  */
 public class SimpleDB {
-   public static int BUFFER_SIZE = 8;
+   public static int BUFFER_SIZE = 2000;
    public static String LOG_FILE = "simpledb.log";
    
    private static FileMgr     fm;
@@ -101,7 +101,7 @@ public class SimpleDB {
     * Modified to use the IndexUpdatePlanner instead of the basic planner
     * @return the system's planner for SQL commands
     */public static Planner planner() {
-      QueryPlanner  qplanner = new BasicQueryPlanner();
+      QueryPlanner  qplanner = new ExploitSortQueryPlanner();
       UpdatePlanner uplanner = new IndexUpdatePlanner();
       return new Planner(qplanner, uplanner);
    }
