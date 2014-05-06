@@ -30,7 +30,7 @@ import java.util.Random;
 public class SortMergeJoinTest {
 
     // The number of random records to insert into the test tables.
-    final static int maxSize = 5000;
+    final static int maxSize = 10000;
 
     /**
      * The main test program method.
