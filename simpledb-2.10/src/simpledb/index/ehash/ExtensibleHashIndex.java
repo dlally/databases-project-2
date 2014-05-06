@@ -20,7 +20,7 @@ import java.util.Set;
 public class ExtensibleHashIndex implements Index {
 
 
-    private final int BUCKET_SIZE = 3; // Arbitrary limit on bucket size
+    private final int BUCKET_SIZE = 5; // Arbitrary limit on bucket size
     private String  idxname, binaryString;
     private Constant searchkey;
     private TrieNode root, currNode;
@@ -93,9 +93,11 @@ public class ExtensibleHashIndex implements Index {
     @Override
     public void insert(Constant dataval, RID datarid) {
         String bString = Integer.toBinaryString(dataval.hashCode());
-        TrieNode node = walk(bString);
+        //Reverse the string so we use the least sig bits
+        String rBString = new StringBuffer(bString).reverse().toString();
+        TrieNode node = walk(rBString);
         //Check if we need to extend our index
-        if(node.getDataSet().keySet().size() >= BUCKET_SIZE){
+        if(node.getDataSet().keySet().size() >= BUCKET_SIZE -1){
             //Add children
             node.grow();
             Set<Constant> keySet = node.getDataSet().keySet();
