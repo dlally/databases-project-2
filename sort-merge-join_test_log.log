@@ -1,0 +1,95 @@
+# CS 4432 - Project 2
+# Selected Example runs of SortMergeJoinTest program
+-------------------------------------------
+############################################
+# Two runs with 500 records per test table #
+############################################
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 483765679 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 445160959 nano seconds.
+
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 489441471 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 446188200 nano seconds.
+
+##############################################
+# Two runs with 1,000 records per test table #
+##############################################
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 939427320 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 929504480 nano seconds.
+
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 952625948 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 929414911 nano seconds.
+
+##############################################
+# Two runs with 5,000 records per test table #
+##############################################
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 4651086486 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 4589120828 nano seconds.
+
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 5054171319 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 5013079203 nano seconds.
+
+###############################################
+# Two runs with 10,000 records per test table #
+###############################################
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 10358741809 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 9576056553 nano seconds.
+
+CREATE TABLE test1(a1 int, a2 int)
+CREATE TABLE test2(a1 int, a2 int)
+Table test1 created.
+Table test2 created.
+Executing Query 1: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 1 Executed in 10248340958 nano seconds.
+
+Executing Query 2: SELECT a1, a2 FROM test1, test2 WHERE a1 = a1
+Query 2 Executed in 9999253283 nano seconds.
+
